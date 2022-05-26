@@ -1,10 +1,14 @@
 pipeline {
-    agent { 
-	}
+    agent {
+        dockerfile {
+        filename '03 - Dockerfile - Install Software Dockerfile'
+        dir '003 - Defining Execution Environments'
+     }
+   }
     stages {
         stage('build') {
             steps {
-            	echo "Don't install curl here!"
+               echo "Don't install curl here!"
                 sh "curl www.google.com"
             }
         }
