@@ -6,6 +6,9 @@ pipeline {
 	}
     stages {
         stage('build') {
+		 environment { 
+                 NOTIFICATION_EMAIL = "TEST_Notification" 
+            }
             steps {
                 echo "$NOTIFICATION_EMAIL"
             }
