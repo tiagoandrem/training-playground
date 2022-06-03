@@ -1,13 +1,15 @@
 pipeline {
     agent { 
 		docker { 
-			image 'alpine:latest' 
+			image 'maven:3.3.3' 
+        		args '--network training-playground'
 		}
 	}
     stages {
         stage('tests') {
             steps {
-                sh ""
+                sh "mvn -f '005 - Recording Test Results and Artifacts/03 - Sonar Integration' sonar:sonar -Dsonar.projectKey='test-moises2' \
+		-Dsonar.projectName='test-moises2' -Dsonar.host.url=http://sonarqube:9000"
             }
         }
     }
